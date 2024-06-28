@@ -10,7 +10,7 @@ const config: DocsThemeConfig = {
   docsRepositoryBase:
     "https://github.com/UmbrellaCrow612/stoic-handbook/tree/main",
   footer: {
-    text: "Nextra Docs Template",
+    text: "Stoic HandBook",
   },
   sidebar: {
     toggleButton: true,
@@ -79,7 +79,7 @@ const config: DocsThemeConfig = {
           content={title ? title + " - Stoic Handbook" : "Stoic Handbook"}
         />
         <meta name="apple-mobile-web-app-title" content="Stoic Handbook" />
-        
+
         <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
         <link rel="icon" href="/favicon.png" type="image/png" />
         <link
