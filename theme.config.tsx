@@ -24,13 +24,15 @@ const config: DocsThemeConfig = {
     }
   },
   head: () => {
-    const { asPath, defaultLocale, locale } = useRouter();
-    const { frontMatter } = useConfig();
+    const { asPath } = useRouter();
+    const { frontMatter, title } = useConfig();
 
     const origin =
       typeof window !== "undefined" && window.location.origin
         ? window.location.origin
         : "";
+
+    const socialCard = `${origin}/api/og?title=${title}`;
 
     const URL = `${origin}${asPath}`;
 
@@ -48,6 +50,8 @@ const config: DocsThemeConfig = {
             "Stoic Handbook learn everything you need to know about Stoicism"
           }
         />
+        <meta name="og:image" content={socialCard} />
+        <meta name="twitter:image" content={socialCard} />
       </>
     );
   },
