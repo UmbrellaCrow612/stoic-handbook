@@ -1,4 +1,8 @@
 {
+  "-- Begin here": {
+    "type": "separator",
+    "title": "Begin Here"
+  },
   "index": "Introduction",
   "daily-quotes": {
     "type": "page",
@@ -7,5 +11,13 @@
       "typesetting": "article"
     }
   },
-  "stoic-practices": "Stoic Practices"
+  "stoic-practices": "Stoic Practices",
+  "-- Stoics": {
+    "type": "separator",
+    "title": "Stoics"
+  },
+  "-- Books": {
+    "type": "separator",
+    "title": "Books"
+  }
 }
