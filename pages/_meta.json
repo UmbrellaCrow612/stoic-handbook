@@ -1,3 +1,10 @@
 {
-  "index": "Introduction"
+  "index": "Introduction",
+  "daily-quotes": {
+    "type": "page",
+    "title": "Daily Quotes",
+    "theme": {
+      "typesetting": "article"
+    }
+  }
 }
