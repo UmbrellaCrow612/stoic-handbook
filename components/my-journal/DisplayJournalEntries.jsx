@@ -122,8 +122,7 @@ const DisplayJournalEntries = () => {
         <p>{entry.actionItem}</p>
       </div>
 
-      <div className="mt-4 flex gap-4 p-1">
-        <button className="px-3 py-2" >Edit</button>
+      <div className="mt-4">
         <button
           className="px-3 py-2"
           onClick={() => handleDeleteEntry(entry.id)}
