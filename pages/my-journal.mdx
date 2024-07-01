@@ -1,0 +1,15 @@
+import Warning from "../components/Warning";
+import JournalEntryForm from "../components/my-journal/JournalEntryForm.jsx"
+import DisplayJournalEntries from "../components/my-journal/DisplayJournalEntries.jsx"
+
+# My Journal
+
+Write you journal entries here on this website as a basis of where to start, then take it and make it your own, by either using paper, another app or somthing else, it's up to you.
+
+<Warning 
+    message={"Note: This uses local storage for saving your journal entries. Clearing it will remove all data."} 
+    storageKey={"myJournalWarning"}
+/>
+
+<JournalEntryForm />
+<DisplayJournalEntries />

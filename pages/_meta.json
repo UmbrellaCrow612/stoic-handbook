@@ -4,6 +4,13 @@
     "title": "Begin Here"
   },
   "index": "Introduction",
+  "my-journal": {
+    "type": "page",
+    "title": "My Journal",
+    "theme": {
+      "typesetting": "article"
+    }
+  },
   "daily-quotes": {
     "type": "page",
     "title": "Daily Quotes",
