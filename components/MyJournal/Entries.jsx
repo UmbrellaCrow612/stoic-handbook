@@ -3,12 +3,25 @@ import { EntryItem } from "./EntryItem";
 
 export const Entries = ({ showEntries }) => {
   const [entries, setEntries] = useState([]);
+  const [searchTerm, setSearchTerm] = useState("");
 
   useEffect(() => {
     const storedEntries =
       JSON.parse(localStorage.getItem("journalEntries")) || [];
     setEntries(storedEntries);
   }, [showEntries]);
+
+  const handleSearch = (e) => {
+    setSearchTerm(e.target.value);
+  };
+
+  const filteredEntries = entries.filter((entry) =>
+    Object.values(entry).some(
+      (value) =>
+        typeof value === "string" &&
+        value.toLowerCase().includes(searchTerm.toLowerCase())
+    )
+  );
 
   return (
     <div className="w-full p-4 space-y-7">
@@ -58,6 +71,8 @@ export const Entries = ({ showEntries }) => {
           <input
             type="text"
             placeholder="Search..."
+            value={searchTerm}
+            onChange={handleSearch}
             className="w-full pl-10 pr-4 py-2 rounded-full border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
           />
           <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
@@ -76,14 +91,18 @@ export const Entries = ({ showEntries }) => {
         </div>
       </div>
 
-      {entries.length === 0 ? (
+      {filteredEntries.length === 0 ? (
         <div className="text-center py-10">
           <p className="text-xl text-gray-500 dark:text-white">
-            No entries found. Start journaling to see your entries here.
+            {searchTerm
+              ? "No matching entries found."
+              : "No entries found. Start journaling to see your entries here."}
           </p>
         </div>
       ) : (
-        entries.map((entry) => <EntryItem key={entry.id} data={entry} />)
+        filteredEntries.map((entry) => (
+          <EntryItem key={entry.id} data={entry} />
+        ))
       )}
     </div>
   );
