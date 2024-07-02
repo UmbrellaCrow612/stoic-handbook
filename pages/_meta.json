@@ -4,6 +4,13 @@
     "title": "Begin Here"
   },
   "index": "Introduction",
+  "timeline": {
+    "type": "page",
+    "title": "Timeline",
+    "theme": {
+      "typesetting": "article"
+    }
+  },
   "my-journal": {
     "type": "page",
     "title": "My Journal",
