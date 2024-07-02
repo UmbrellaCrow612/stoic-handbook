@@ -1,20 +1,14 @@
+import { useEffect, useState } from "react";
 import { EntryItem } from "./EntryItem";
 
 export const Entries = () => {
-  const initialFormData = {
-    id: "123213132",
-    date: new Date().toISOString().split("T")[0],
-    gratitude: "12",
-    morningReflection: "12",
-    eveningReflection: "12",
-    improvement: "12",
-    perspective: "12",
-    mementoMori: "12",
-    premeditatioMalorum: "12",
-    voluntaryDiscomfort: "12",
-    nature: "12",
-    emotionalAwareness: "12",
-  };
+  const [entries, setEntries] = useState([]);
+
+  useEffect(() => {
+    const storedEntries =
+      JSON.parse(localStorage.getItem("journalEntries")) || [];
+    setEntries(storedEntries);
+  }, []);
 
   return (
     <div className="w-full p-4 space-y-7">
@@ -82,8 +76,15 @@ export const Entries = () => {
         </div>
       </div>
 
-      {/* Loop and render each entry item  */}
-      <EntryItem data={initialFormData} />
+      {entries.length === 0 ? (
+        <div className="text-center py-10">
+          <p className="text-xl text-gray-500 dark:text-white">
+            No entries found. Start journaling to see your entries here.
+          </p>
+        </div>
+      ) : (
+        entries.map((entry) => <EntryItem key={entry.id} data={entry} />)
+      )}
     </div>
   );
 };
