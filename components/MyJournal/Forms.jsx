@@ -32,6 +32,14 @@ export const Forms = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+
+    setFormData(initialFormData);
+
+    const topElement = document.getElementById("topOfJournal");
+    if (topElement) {
+      topElement.scrollIntoView({ behavior: "smooth" });
+    }
+
     console.log("Form submitted:", formData);
     // Handle form submission logic here
   };
@@ -45,7 +53,7 @@ export const Forms = () => {
       <label htmlFor={id} className="block mb-1 font-bold">
         {label}:
       </label>
-      <p id={`${id}-description`} className="text-sm text-gray-600 mb-2">
+      <p id={`${id}-description`} className="text-sm mb-2">
         {description}
       </p>
       <textarea
