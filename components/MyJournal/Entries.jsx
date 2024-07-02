@@ -1,14 +1,14 @@
 import { useEffect, useState } from "react";
 import { EntryItem } from "./EntryItem";
 
-export const Entries = () => {
+export const Entries = ({ showEntries }) => {
   const [entries, setEntries] = useState([]);
 
   useEffect(() => {
     const storedEntries =
       JSON.parse(localStorage.getItem("journalEntries")) || [];
     setEntries(storedEntries);
-  }, []);
+  }, [showEntries]);
 
   return (
     <div className="w-full p-4 space-y-7">

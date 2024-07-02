@@ -12,7 +12,7 @@ const MyJournal = () => {
       >
         {showEntries ? "Show Form" : "Show Entries"}
       </button>
-      {showEntries ? <Entries /> : <Forms />}
+      {showEntries ? <Entries showEntries={showEntries} /> : <Forms />}
     </div>
   );
 };
