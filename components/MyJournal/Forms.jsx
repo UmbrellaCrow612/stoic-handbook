@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 export const Forms = () => {
   const generateId = () => {
@@ -21,6 +21,13 @@ export const Forms = () => {
   };
 
   const [formData, setFormData] = useState(initialFormData);
+  const [entries, setEntries] = useState([]);
+
+  useEffect(() => {
+    const storedEntries =
+      JSON.parse(localStorage.getItem("journalEntries")) || [];
+    setEntries(storedEntries);
+  }, []);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -33,15 +40,22 @@ export const Forms = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
 
+    const newEntry = { ...formData };
+
+    setEntries((prevEntries) => {
+      const updatedEntries = [...prevEntries, newEntry];
+
+      localStorage.setItem("journalEntries", JSON.stringify(updatedEntries));
+
+      return updatedEntries;
+    });
+
     setFormData(initialFormData);
 
     const topElement = document.getElementById("topOfJournal");
     if (topElement) {
       topElement.scrollIntoView({ behavior: "smooth" });
     }
-
-    console.log("Form submitted:", formData);
-    // Handle form submission logic here
   };
 
   const handleClear = () => {
