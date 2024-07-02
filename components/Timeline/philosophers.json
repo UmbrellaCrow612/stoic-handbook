@@ -1,0 +1,35 @@
+[
+  {
+    "name": "Zeno of Citium",
+    "image": "/public/assets/zeno-of-citium.webp",
+    "children": [
+      {
+        "name": "Cleanthes",
+        "image": "cleanthes.jpg",
+        "children": [
+          {
+            "name": "Chrysippus",
+            "image": "chrysippus.jpg",
+            "children": []
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Seneca",
+    "image": "seneca.jpg",
+    "children": []
+  },
+  {
+    "name": "Epictetus",
+    "image": "epictetus.jpg",
+    "children": [
+      {
+        "name": "Marcus Aurelius",
+        "image": "marcus_aurelius.jpg",
+        "children": []
+      }
+    ]
+  }
+]
