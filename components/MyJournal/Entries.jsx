@@ -1,4 +1,28 @@
 export const Entries = () => {
+  const initialFormData = {
+    id: "123213132",
+    date: new Date().toISOString().split("T")[0],
+    gratitude: "",
+    morningReflection: "",
+    eveningReflection: "",
+    improvement: "",
+    perspective: "",
+    mementoMori: "",
+    premeditatioMalorum: "",
+    voluntaryDiscomfort: "",
+    nature: "",
+    emotionalAwareness: "",
+  };
+
+  const renderEntryField = (label, value) => (
+    <div className="mb-4">
+      <h3 className="text-lg font-semibold mb-2">{label}</h3>
+      <p className="dark:bg-gray-100 text-black bg-gray-200 p-3 rounded-lg">
+        {value || "No entry"}
+      </p>
+    </div>
+  );
+
   return (
     <div className="w-full p-4 space-y-7">
       <div className="w-full flex gap-4">
@@ -63,6 +87,43 @@ export const Entries = () => {
             </svg>
           </div>
         </div>
+      </div>
+
+      {/* Loop and render each entry item  */}
+
+      <div className="shadow-md rounded-lg p-6 mb-6 border">
+        <div className="flex justify-between items-center mb-4">
+          <h2 className="text-2xl font-bold">{initialFormData.date}</h2>
+          <span className="text-sm text-gray-500 dark:text-gray-200">
+            ID: {initialFormData.id}
+          </span>
+        </div>
+
+        {renderEntryField(
+          "Morning Reflection",
+          initialFormData.morningReflection
+        )}
+        {renderEntryField(
+          "Evening Reflection",
+          initialFormData.eveningReflection
+        )}
+        {renderEntryField("Gratitude", initialFormData.gratitude)}
+        {renderEntryField("Self-improvement", initialFormData.improvement)}
+        {renderEntryField("Perspective", initialFormData.perspective)}
+        {renderEntryField("Memento Mori", initialFormData.mementoMori)}
+        {renderEntryField(
+          "Premeditatio Malorum",
+          initialFormData.premeditatioMalorum
+        )}
+        {renderEntryField(
+          "Voluntary Discomfort",
+          initialFormData.voluntaryDiscomfort
+        )}
+        {renderEntryField("Nature of the Universe", initialFormData.nature)}
+        {renderEntryField(
+          "Emotional Awareness",
+          initialFormData.emotionalAwareness
+        )}
       </div>
     </div>
   );
