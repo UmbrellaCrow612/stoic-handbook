@@ -35,8 +35,9 @@ export const EntryItem = ({ data }) => {
   };
 
   const handleConfirmDelete = () => {
-    // Add delete logic here
-    console.log(`Entry with ID ${id} deleted.`);
+    const journalEntries = JSON.parse(localStorage.getItem("journalEntries")) || [];
+    const updatedEntries = journalEntries.filter(entry => entry.id !== id);
+    localStorage.setItem("journalEntries", JSON.stringify(updatedEntries));
     deleteDialogRef.current.close();
   };
 
