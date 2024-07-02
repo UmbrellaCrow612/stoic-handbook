@@ -1,6 +1,6 @@
 import React, { useRef, useState } from "react";
 
-export const EntryItem = ({ data }) => {
+export const EntryItem = ({ data, onEntryDeleted }) => {
   const {
     date,
     id,
@@ -39,6 +39,7 @@ export const EntryItem = ({ data }) => {
     const updatedEntries = journalEntries.filter(entry => entry.id !== id);
     localStorage.setItem("journalEntries", JSON.stringify(updatedEntries));
     deleteDialogRef.current.close();
+    onEntryDeleted(id);  // Notify parent component about deletion
   };
 
   const handleCancelDelete = () => {
@@ -50,7 +51,11 @@ export const EntryItem = ({ data }) => {
   };
 
   const handleSaveEdit = () => {
-    // Add save logic here
+    const journalEntries = JSON.parse(localStorage.getItem("journalEntries")) || [];
+    const updatedEntries = journalEntries.map(entry =>
+      entry.id === id ? editData : entry
+    );
+    localStorage.setItem("journalEntries", JSON.stringify(updatedEntries));
     console.log('Edited data saved:', editData);
     editDialogRef.current.close();
   };
@@ -116,7 +121,7 @@ export const EntryItem = ({ data }) => {
         </div>
       </dialog>
 
-      <dialog ref={editDialogRef} className="rounded-lg p-4 w-full max-w-md">
+      <dialog ref={editDialogRef} className="rounded-lg p-4">
         <h2 className="text-lg font-semibold mb-4">Edit Entry</h2>
         {Object.keys(editData).map((key) => (
           key !== 'id' && key !== 'date' && (

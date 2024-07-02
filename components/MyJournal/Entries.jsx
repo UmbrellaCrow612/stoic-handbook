@@ -6,13 +6,18 @@ export const Entries = ({ showEntries }) => {
   const [searchTerm, setSearchTerm] = useState("");
 
   useEffect(() => {
-    const storedEntries =
-      JSON.parse(localStorage.getItem("journalEntries")) || [];
+    const storedEntries = JSON.parse(localStorage.getItem("journalEntries")) || [];
     setEntries(storedEntries);
   }, [showEntries]);
 
   const handleSearch = (e) => {
     setSearchTerm(e.target.value);
+  };
+
+  const handleEntryDeleted = (id) => {
+    const updatedEntries = entries.filter(entry => entry.id !== id);
+    setEntries(updatedEntries);
+    localStorage.setItem("journalEntries", JSON.stringify(updatedEntries));
   };
 
   const filteredEntries = entries.filter((entry) =>
@@ -101,7 +106,7 @@ export const Entries = ({ showEntries }) => {
         </div>
       ) : (
         filteredEntries.map((entry) => (
-          <EntryItem key={entry.id} data={entry} />
+          <EntryItem key={entry.id} data={entry} onEntryDeleted={handleEntryDeleted} />
         ))
       )}
     </div>
