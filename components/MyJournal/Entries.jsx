@@ -24,7 +24,7 @@ export const Entries = ({ showEntries }) => {
   );
 
   return (
-    <div className="w-full p-4 space-y-7">
+    <div className="w-full space-y-7">
       <div className="w-full flex gap-4">
         <button className="flex-1 bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline transition duration-150 ease-in-out">
           <span className="flex items-center justify-center">

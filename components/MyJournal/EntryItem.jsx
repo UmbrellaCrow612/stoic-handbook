@@ -42,8 +42,8 @@ export const EntryItem = ({ data }) => {
   };
 
   return (
-    <div className="shadow-md rounded-lg p-6 mb-6 border">
-      <div className="flex justify-between items-center mb-4">
+    <div className="shadow-md rounded-lg mb-6 border px-3 py-2">
+      <div className="flex flex-col md:flex-row md:justify-between gap-2 mb-4">
         <h2 className="text-2xl font-bold">{date}</h2>
         <span className="text-sm text-gray-500 dark:text-gray-200">
           ID: {id}
