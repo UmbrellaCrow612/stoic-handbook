@@ -20,6 +20,14 @@ export const Entries = ({ showEntries }) => {
     localStorage.setItem("journalEntries", JSON.stringify(updatedEntries));
   };
 
+  const handleEntryEdited = (editedEntry) => {
+    const updatedEntries = entries.map(entry => 
+      entry.id === editedEntry.id ? editedEntry : entry
+    );
+    setEntries(updatedEntries);
+    localStorage.setItem("journalEntries", JSON.stringify(updatedEntries));
+  };
+
   const filteredEntries = entries.filter((entry) =>
     Object.values(entry).some(
       (value) =>
@@ -106,7 +114,12 @@ export const Entries = ({ showEntries }) => {
         </div>
       ) : (
         filteredEntries.map((entry) => (
-          <EntryItem key={entry.id} data={entry} onEntryDeleted={handleEntryDeleted} />
+          <EntryItem 
+            key={entry.id} 
+            data={entry} 
+            onEntryDeleted={handleEntryDeleted} 
+            onEntryEdited={handleEntryEdited} 
+          />
         ))
       )}
     </div>

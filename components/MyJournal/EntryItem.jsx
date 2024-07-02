@@ -1,6 +1,6 @@
 import React, { useRef, useState } from "react";
 
-export const EntryItem = ({ data, onEntryDeleted }) => {
+export const EntryItem = ({ data, onEntryDeleted, onEntryEdited }) => {
   const {
     date,
     id,
@@ -35,11 +35,12 @@ export const EntryItem = ({ data, onEntryDeleted }) => {
   };
 
   const handleConfirmDelete = () => {
-    const journalEntries = JSON.parse(localStorage.getItem("journalEntries")) || [];
-    const updatedEntries = journalEntries.filter(entry => entry.id !== id);
+    const journalEntries =
+      JSON.parse(localStorage.getItem("journalEntries")) || [];
+    const updatedEntries = journalEntries.filter((entry) => entry.id !== id);
     localStorage.setItem("journalEntries", JSON.stringify(updatedEntries));
     deleteDialogRef.current.close();
-    onEntryDeleted(id);  // Notify parent component about deletion
+    onEntryDeleted(id); // Notify parent component about deletion
   };
 
   const handleCancelDelete = () => {
@@ -51,13 +52,14 @@ export const EntryItem = ({ data, onEntryDeleted }) => {
   };
 
   const handleSaveEdit = () => {
-    const journalEntries = JSON.parse(localStorage.getItem("journalEntries")) || [];
-    const updatedEntries = journalEntries.map(entry =>
+    const journalEntries =
+      JSON.parse(localStorage.getItem("journalEntries")) || [];
+    const updatedEntries = journalEntries.map((entry) =>
       entry.id === id ? editData : entry
     );
     localStorage.setItem("journalEntries", JSON.stringify(updatedEntries));
-    console.log('Edited data saved:', editData);
-    editDialogRef.current.close();
+    onEntryEdited(editData);
+    editDialogRef.current.close()
   };
 
   const handleCancelEdit = () => {
@@ -91,7 +93,10 @@ export const EntryItem = ({ data, onEntryDeleted }) => {
       {renderEntryField("Emotional Awareness", emotionalAwareness)}
 
       <div className="flex justify-end mt-4">
-        <button className="bg-blue-500 text-white px-4 py-2 rounded-lg mr-2" onClick={handleEditClick}>
+        <button
+          className="bg-blue-500 text-white px-4 py-2 rounded-lg mr-2"
+          onClick={handleEditClick}
+        >
           Edit
         </button>
         <button
@@ -121,23 +126,27 @@ export const EntryItem = ({ data, onEntryDeleted }) => {
         </div>
       </dialog>
 
-      <dialog ref={editDialogRef} className="rounded-lg p-4">
+      <dialog ref={editDialogRef} className="rounded-lg p-4 w-full max-w-md">
         <h2 className="text-lg font-semibold mb-4">Edit Entry</h2>
-        {Object.keys(editData).map((key) => (
-          key !== 'id' && key !== 'date' && (
-            <div key={key} className="mb-4">
-              <label className="block text-sm font-medium mb-2" htmlFor={key}>{key.split(/(?=[A-Z])/).join(' ')}</label>
-              <input
-                type="text"
-                id={key}
-                name={key}
-                value={editData[key]}
-                onChange={handleChange}
-                className="dark:bg-gray-100 text-black bg-gray-200 p-3 rounded-lg w-full"
-              />
-            </div>
-          )
-        ))}
+        {Object.keys(editData).map(
+          (key) =>
+            key !== "id" &&
+            key !== "date" && (
+              <div key={key} className="mb-4">
+                <label className="block text-sm font-medium mb-2" htmlFor={key}>
+                  {key.split(/(?=[A-Z])/).join(" ")}
+                </label>
+                <input
+                  type="text"
+                  id={key}
+                  name={key}
+                  value={editData[key]}
+                  onChange={handleChange}
+                  className="dark:bg-gray-100 text-black bg-gray-200 p-3 rounded-lg w-full"
+                />
+              </div>
+            )
+        )}
         <div className="flex justify-end mt-4">
           <button
             className="bg-gray-500 text-white px-4 py-2 rounded-lg mr-2"
