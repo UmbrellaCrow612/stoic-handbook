@@ -1,15 +1,51 @@
 [
   {
-    "name": "Zeno of Citium",
-    "image": "/public/assets/zeno-of-citium.webp",
+    "name": "Zeno of Citium (334-262 BCE)",
     "children": [
       {
-        "name": "Cleanthes",
-        "image": "cleanthes.jpg",
+        "name": "Cleanthes (330-230 BCE)",
         "children": [
           {
-            "name": "Chrysippus",
-            "image": "chrysippus.jpg",
+            "name": "Chrysippus (280-207 BCE)",
+            "children": []
+          }
+        ]
+      },
+      {
+        "name": "Aristo of Chios (3rd century BCE)",
+        "children": []
+      }
+    ]
+  },
+  {
+    "name": "Panaetius (185-110 BCE)",
+    "children": [
+      {
+        "name": "Posidonius (135-51 BCE)",
+        "children": []
+      }
+    ]
+  },
+  {
+    "name": "Cicero (106-43 BCE)",
+    "children": []
+  },
+  {
+    "name": "Seneca the Younger (4 BCE - 65 CE)",
+    "children": []
+  },
+  {
+    "name": "Musonius Rufus (30-100 CE)",
+    "children": [
+      {
+        "name": "Epictetus (50-135 CE)",
+        "children": [
+          {
+            "name": "Arrian (86-160 CE)",
+            "children": []
+          },
+          {
+            "name": "Marcus Aurelius (121-180 CE)",
             "children": []
           }
         ]
@@ -17,19 +53,11 @@
     ]
   },
   {
-    "name": "Seneca",
-    "image": "seneca.jpg",
+    "name": "Hierocles (2nd century CE)",
     "children": []
   },
   {
-    "name": "Epictetus",
-    "image": "epictetus.jpg",
-    "children": [
-      {
-        "name": "Marcus Aurelius",
-        "image": "marcus_aurelius.jpg",
-        "children": []
-      }
-    ]
+    "name": "Cato the Younger (95-46 BCE)",
+    "children": []
   }
 ]
