@@ -4,6 +4,13 @@
     "title": "Begin Here"
   },
   "index": "Introduction",
+  "challenges": {
+    "type": "page",
+    "title": "Challenges",
+    "theme": {
+      "typesetting": "article"
+    }
+  },
   "timeline": {
     "type": "page",
     "title": "Timeline",
